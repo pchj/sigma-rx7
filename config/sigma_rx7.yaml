@@ -1,0 +1,41 @@
+# SigmaRx7 Configuration File
+# Synthetic healthcare ETL/ELT pipeline configuration
+
+# Database Configuration
+database:
+  host: localhost
+  port: 5432
+  database: sigma_rx7
+  username: postgres
+  password: password
+  schema: public
+
+# FHIR Processing Configuration
+fhir:
+  base_url: null
+  version: R4
+  batch_size: 100
+  timeout: 30
+
+# RxNorm API Configuration
+rxnorm:
+  api_url: https://rxnav.nlm.nih.gov/REST
+  timeout: 10
+  rate_limit: 0.5
+
+# Machine Learning Configuration
+ml:
+  model_path: models/denial_predictor.joblib
+  feature_columns: []
+  target_column: denial_probability
+  train_test_split: 0.2
+
+# Pipeline Configuration
+pipeline:
+  name: sigma-rx7-pipeline
+  version: "1.0"
+  parallel_workers: 4
+  chunk_size: 1000
+  enable_ml: true
+  enable_overlap_detection: true
+  enable_generic_recommendations: true

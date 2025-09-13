@@ -1,0 +1,88 @@
+{
+  "resourceType": "Bundle",
+  "id": "sample-patient-bundle",
+  "type": "collection",
+  "timestamp": "2024-01-01T00:00:00Z",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "patient-001",
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Smith",
+            "given": ["John"]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1979-01-01"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "med-request-001",
+        "status": "active",
+        "intent": "order",
+        "medication": {
+          "concept": {
+            "coding": [
+              {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "1991302",
+                "display": "Ozempic 0.5mg"
+              }
+            ]
+          }
+        },
+        "subject": {
+          "reference": "Patient/patient-001"
+        },
+        "dispenseRequest": {
+          "quantity": {
+            "value": 1,
+            "unit": "pen"
+          },
+          "expectedSupplyDuration": {
+            "value": 28,
+            "unit": "days"
+          }
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "med-request-002",
+        "status": "active",
+        "intent": "order",
+        "medication": {
+          "concept": {
+            "coding": [
+              {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "617311",
+                "display": "Lipitor 40mg"
+              }
+            ]
+          }
+        },
+        "subject": {
+          "reference": "Patient/patient-001"
+        },
+        "dispenseRequest": {
+          "quantity": {
+            "value": 30,
+            "unit": "tablets"
+          },
+          "expectedSupplyDuration": {
+            "value": 30,
+            "unit": "days"
+          }
+        }
+      }
+    }
+  ]
+}
